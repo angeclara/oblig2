@@ -1,4 +1,3 @@
-const kunder = [];
 function kjop() {
     let antall = document.getElementById("antall").value;
     let fornavn = document.getElementById("fNavn").value;
@@ -71,18 +70,66 @@ function kjop() {
         film: film
     };
 
-    kunder.push(kunde);
-    for (let person of kunder) {
+    $.post("/load", kunde, function () {
+        getAll();
+    });
+
+    $("#fNavn").val(ut);
+    $("#eNavn").val(ut);
+    $("#telefonnr").val(ut);
+    $("#ePost").val(ut)
+    $("#antall").val(ut);
+
+    function getAll() {
+        $.get("/getAll", function(data){
+           formatData(data);
+        });
+    }
+
+    //kunder.push(kunde);
+
+    function formatData(customers) {
+        for (const customer of customers) {
+            ut += "<li>";
+            ut += customer.navn + ", ";
+            ut += customer.telefon + ", ";
+            ut += customer.epost + "<br>";
+            ut += customer.antall + "x " + customer.film;
+            ut += "</li>"
+            console.log(customer.navn);
+        }
+        $("#customerRegistry").html(ut);
+    }
+    /*for (let person of kunder) {
         ut += "<li>" + person.navn + ", ";
         ut += person.telefon + ", ";
         ut += person.epost + "<br>";
         ut += person.antall + "x " + person.film + "</li>";
-        document.getElementById("kunderegister").innerHTML = ut;
-    }
+        document.getElementById("customerRegistry").innerHTML = ut;
+    }*/
 
 }
 
 function slett() {
+    let ut = "";
+    $.post("/delete", function () {
+        deleteAll();
+    });
+
+    function deleteAll() {
+        $.get("/deleted", function () {
+            $("#customerRegistry").html(ut);
+        })
+    }
+}
+
+/*function slett() {
+    $.post("/delete", function (data) {
+        $("#customerRegistry").html(ut);
+    })
+}*/
+
+/*function slett() {
     kunder.splice(0,kunder.length);
     document.getElementById("kunderegister").innerHTML = "";
-}
+}*/
