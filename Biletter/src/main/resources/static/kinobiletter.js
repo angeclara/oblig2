@@ -86,8 +86,6 @@ function kjop() {
         });
     }
 
-    //kunder.push(kunde);
-
     function formatData(customers) {
         for (const customer of customers) {
             ut += "<li>";
@@ -100,36 +98,17 @@ function kjop() {
         }
         $("#customerRegistry").html(ut);
     }
-    /*for (let person of kunder) {
-        ut += "<li>" + person.navn + ", ";
-        ut += person.telefon + ", ";
-        ut += person.epost + "<br>";
-        ut += person.antall + "x " + person.film + "</li>";
-        document.getElementById("customerRegistry").innerHTML = ut;
-    }*/
 
 }
 
 function slett() {
-    let ut = "";
     $.post("/delete", function () {
         deleteAll();
     });
 
     function deleteAll() {
         $.get("/deleted", function () {
-            $("#customerRegistry").html(ut);
+            $("#customerRegistry").html("");
         })
     }
 }
-
-/*function slett() {
-    $.post("/delete", function (data) {
-        $("#customerRegistry").html(ut);
-    })
-}*/
-
-/*function slett() {
-    kunder.splice(0,kunder.length);
-    document.getElementById("kunderegister").innerHTML = "";
-}*/
