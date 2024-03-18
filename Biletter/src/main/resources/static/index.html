@@ -8,36 +8,45 @@
 <body>
 <h1>Bestilling av kinobiletter</h1>
 <div class="container">
-    <label for="velg">Velg Film: </label>
-    <select id="velg" name="Velg film">
-        <option>The Hunger Games: The Ballad of Songbirds & Snakes</option>
-        <option>Dune: Part Two</option>
-        <option>Wonka</option>
-        <option>Damsel</option>
-    </select><br><br>
-    <label for="antall">Antall  </label><input type="text" id="antall"><span id="feilantall"></span><br><br>
-    <table>
-        <tr>
-            <td>Fornavn</td>
-            <td><input type="text" id="fNavn"></td><td id="feilnavn"></td>
-        </tr>
-        <tr>
-            <td>Etternavn</td>
-            <td><input type="text" id="eNavn"></td><td id="feilenavn"></td>
-        </tr>
-        <tr>
-            <td>Telefonnr</td>
-            <td><input type="text" id="telefonnr"></td><td id="feilnummer"></td>
-        </tr>
-        <tr>
-            <td>Epost</td>
-            <td><input type="text" id="ePost"></td><td id="feilepost"></td>
-        </tr>
-    </table><br>
-    <button onclick="kjop()" type="button">Kjøp bilett</button>
-    <h2>Alle biletter</h2>
-    <div id="customerRegistry"></div>
-    <button onclick="slett()">Slett alle bilettene</button>
+    <div class="row">
+        <div class="col-md-4">
+            <form class="form">
+                <label for="velg">Velg Film: </label>
+                <select id="velg" name="Velg film">
+                    <option>The Hunger Games: The Ballad of Songbirds & Snakes</option>
+                    <option>Dune: Part Two</option>
+                    <option>Wonka</option>
+                    <option>Damsel</option>
+                </select><br><br>
+                <label for="antall">Antall  </label><input type="text" id="antall"><span id="feilantall"></span>
+                <br><br>
+            </form>
+            <table class="table">
+                <tr class="table-group">
+                    <td>Fornavn</td>
+                    <td><input type="text" id="fNavn"></td><td id="feilnavn"></td>
+                </tr>
+                <tr class="table-group">
+                    <td>Etternavn</td>
+                    <td><input type="text" id="eNavn"></td><td id="feilenavn"></td>
+                </tr>
+                <tr class="table-group">
+                    <td>Telefonnr</td>
+                    <td><input type="text" id="telefonnr"></td><td id="feilnummer"></td>
+                </tr>
+                <tr class="table-group">
+                    <td>Epost</td>
+                    <td><input type="text" id="ePost"></td><td id="feilepost"></td>
+                </tr>
+            </table><br>
+            <button class="btn btn-danger" onclick="kjop()" type="button">Kjøp bilett</button>
+        </div>
+        <div class="col-md-8">
+            <h2>Alle biletter</h2>
+            <div id="customerRegistry"></div>
+            <button class="btn btn-danger" onclick="slett()">Slett alle bilettene</button>
+        </div>
+    </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="kinobiletter.js"></script>
